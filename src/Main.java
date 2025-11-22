@@ -5,21 +5,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
-        System.out.println(read());
+        //System.out.println(read());
+        Main main= new Main();
+        ScoreBoard[] scores = main.read();
+        main.winCount(scores);
+
 
     }
 
-    public static ScoreBoard[] read() throws FileNotFoundException {
-        int RTotal = 0;//initialize variables
-        int OTotal = 0;
-        int YTotal = 0;
-        int GTotal = 0;
-        int BTotal = 0;
-        int ITotal = 0;
-        int VTotal = 0;
+    public  ScoreBoard[] read() throws FileNotFoundException {
+
         File f = new File("ScoreBoard.txt");//document
         Scanner s = new Scanner(f);//scan the document
-        ScoreBoard[] lines = new ScoreBoard[1000];//initialize the array of 1000 games
+        ScoreBoard[] scores = new ScoreBoard[1000];//initialize the array of 1000 games
         int indexOfLines=0;
 
         while (s.hasNext()) {
@@ -29,14 +27,61 @@ public class Main {
                 score.recordPlay(num);
 
             }
-            lines[indexOfLines]= score; //assign indexoflines to score and increment
+            scores[indexOfLines]= score; //assign indexoflines to score and increment
             indexOfLines++;
 
 
         }
 
-        return lines;
+        return scores;
 
     }
 
+    public void winCount(ScoreBoard[] scores) {
+        int RTotal = 0;//initialize variables
+        int OTotal = 0;
+        int YTotal = 0;
+        int GTotal = 0;
+        int BTotal = 0;
+        int ITotal = 0;
+        int VTotal = 0;
+        int ties = 0;
+        for(int i=0; i< scores.length;i++){
+            ScoreBoard score = scores[i];
+            String winner = score.getWinner();
+            if(winner==null){
+                ties++;
+            }
+            else if(winner.equals("Red")){
+                RTotal++;
+            }
+           else if(winner.equals("Orange")){
+                OTotal++;
+            }
+           else if(winner.equals("Yellow")){
+                YTotal++;
+            }
+           else if(winner.equals("Green")){
+                GTotal++;
+            }
+            else if(winner.equals("Blue")){
+                BTotal++;
+            }
+            else if(winner.equals("Indigo")){
+                ITotal++;
+            }
+            else if(winner.equals("Violet")){
+                VTotal++;
+            }
+        }
+        System.out.println(RTotal);
+        System.out.println(OTotal);
+        System.out.println(YTotal);
+        System.out.println(GTotal);
+        System.out.println(BTotal);
+        System.out.println(ITotal);
+        System.out.println(VTotal);
+        System.out.println(ties);
+
+    }
 }

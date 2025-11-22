@@ -16,7 +16,7 @@ public class ScoreBoard {
         if(num==0){
             isActive=!isActive;
         }
-        if(isActive) {
+        else if(isActive) {
             scoreTeam1+=num;
         }
         else {
