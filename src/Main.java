@@ -5,29 +5,62 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
+         /* String info;
+        ScoreBoard game=new ScoreBoard("Red", "Blue");
+        info=game.getScore();
+        System.out.println(info);
+        game.recordPlay(1);
+        info=game.getScore();
+        System.out.println(info);
+        game.recordPlay(0);
+        info=game.getScore();
+        System.out.println(info);
+        info=game.getScore();
+        System.out.println(info);
+        game.recordPlay(3);
+        info=game.getScore();
+        System.out.println(info);
+        game.recordPlay(1);
+        game.recordPlay(0);
+        info=game.getScore();
+        System.out.println(info);
+        game.recordPlay(0);
+        game.recordPlay(4);
+        game.recordPlay(0);
+        info=game.getScore();
+        System.out.println(info);
+
+        ScoreBoard match = new ScoreBoard("Lions", "Tigers");
+        info=match.getScore();
+        System.out.println(info);
+
+        info=game.getScore();
+        System.out.println(info); */
+
+
         //System.out.println(read());
-        Main main= new Main();
+        Main main = new Main();
         ScoreBoard[] scores = main.read();
         main.winCount(scores);
 
 
     }
 
-    public  ScoreBoard[] read() throws FileNotFoundException {
+    public ScoreBoard[] read() throws FileNotFoundException {
 
         File f = new File("ScoreBoard.txt");//document
         Scanner s = new Scanner(f);//scan the document
         ScoreBoard[] scores = new ScoreBoard[1000];//initialize the array of 1000 games
-        int indexOfLines=0;
+        int indexOfLines = 0;
 
         while (s.hasNext()) {
-            ScoreBoard score= new ScoreBoard(s.next(), s.next());
+            ScoreBoard score = new ScoreBoard(s.next(), s.next());
             while (s.hasNextInt()) { //now track the integers and add them up
                 int num = s.nextInt();
                 score.recordPlay(num);
 
             }
-            scores[indexOfLines]= score; //assign indexoflines to score and increment
+            scores[indexOfLines] = score; //assign indexoflines to score and increment
             indexOfLines++;
 
 
@@ -46,42 +79,35 @@ public class Main {
         int ITotal = 0;
         int VTotal = 0;
         int ties = 0;
-        for(int i=0; i< scores.length;i++){
-            ScoreBoard score = scores[i];
-            String winner = score.getWinner();
-            if(winner==null){
+        for (int i = 0; i < scores.length; i++) {
+            ScoreBoard score = scores[i]; //capture values from array
+            String winner = score.getWinner(); //call a method to get winner
+            if (winner == null) {  //the trash bin for ties
                 ties++;
-            }
-            else if(winner.equals("Red")){
+            } else if (winner.equals("Red")) {  //count red wins
                 RTotal++;
-            }
-           else if(winner.equals("Orange")){
+            } else if (winner.equals("Orange")) { //repeat for all colors
                 OTotal++;
-            }
-           else if(winner.equals("Yellow")){
+            } else if (winner.equals("Yellow")) {
                 YTotal++;
-            }
-           else if(winner.equals("Green")){
+            } else if (winner.equals("Green")) {
                 GTotal++;
-            }
-            else if(winner.equals("Blue")){
+            } else if (winner.equals("Blue")) {
                 BTotal++;
-            }
-            else if(winner.equals("Indigo")){
+            } else if (winner.equals("Indigo")) {
                 ITotal++;
-            }
-            else if(winner.equals("Violet")){
+            } else if (winner.equals("Violet")) {
                 VTotal++;
             }
         }
-        System.out.println(RTotal);
+        System.out.println(RTotal); //print total for all colors in order of rainbow
         System.out.println(OTotal);
         System.out.println(YTotal);
         System.out.println(GTotal);
         System.out.println(BTotal);
         System.out.println(ITotal);
         System.out.println(VTotal);
-        System.out.println(ties);
+        System.out.println(ties); //printed bc it may be good for later
 
     }
 }
