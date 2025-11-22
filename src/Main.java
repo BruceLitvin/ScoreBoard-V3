@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-
-         /* String info;
+ //test cases
+          String info;
         ScoreBoard game=new ScoreBoard("Red", "Blue");
         info=game.getScore();
         System.out.println(info);
@@ -35,10 +35,8 @@ public class Main {
         System.out.println(info);
 
         info=game.getScore();
-        System.out.println(info); */
+        System.out.println(info);
 
-
-        //System.out.println(read());
         Main main = new Main();
         ScoreBoard[] scores = main.read();
         main.winCount(scores);
