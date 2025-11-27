@@ -98,14 +98,14 @@ public class Main {
                 VTotal++;
             }
         }
-        System.out.println(RTotal); //print total for all colors in order of rainbow
-        System.out.println(OTotal);
-        System.out.println(YTotal);
-        System.out.println(GTotal);
-        System.out.println(BTotal);
-        System.out.println(ITotal);
-        System.out.println(VTotal);
-        System.out.println(ties); //printed bc it may be good for later
+        System.out.println("Red:" + RTotal); //print total for all colors in order of rainbow
+        System.out.println("Orange:" + OTotal);
+        System.out.println("Yellow:" + YTotal);
+        System.out.println("Green:" + GTotal);
+        System.out.println("Blue:" + BTotal);
+        System.out.println("Indigo:" + ITotal);
+        System.out.println("Violet:" + VTotal);
+        System.out.println("Ties:" + ties); //printed bc it may be good for later
 
     }
 }
